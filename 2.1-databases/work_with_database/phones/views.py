@@ -19,11 +19,7 @@ def show_catalog(request):
         sort_type = 'name'
 
     phones_db = Phone.objects.all().order_by(sort_type)
-    phones = list()
-    for phone in phones_db:
-        phone = {'id': phone.id, 'name': phone.name, 'price': phone.price, 'image': phone.image, 'slug': phone.slug}
-        phones.append(phone)
-    context = {'phones': phones}
+    context = {'phones': phones_db}
     return render(request, template, context)
 
 
